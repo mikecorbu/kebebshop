@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizează comanda</title> 
+    <link rel="stylesheet" href="pag2.css">
+</head>
+<body>
+    <img src="img/Group 2.png" alt="Background de sus" class="top-image">
+   <!-- <img src="img/LOGO.png" alt="Imagine deasupra titlului" class="logo">-->
+    <h2>Completează datele pentru comandă</h2>
+    
+    <div class="container-wrapper">
+        <div id="cartItems">
+            <h3>Produse comandate:</h3>
+            <!-- Produsele din coș vor fi afișate aici -->
+        </div>
+        
+        <form id="orderForm" action="index.php" method="post">
+            <label for="nume">Nume și prenume:</label>
+            <input type="text" id="nume" name="nume" required>
+    
+            <label for="telefon">Număr de telefon:</label>
+            <input type="tel" id="telefon" name="telefon" required>
+    
+            <label for="adresa">Adresă:</label>
+            <input type="text" id="adresa" name="adresa" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <input type="hidden" name="cartData" id="cartData">
+            <button type="submit">Trimite comanda</button>
+        </form>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function displayCart() {
+            let cartItemsDiv = document.getElementById("cartItems");
+            cartItemsDiv.innerHTML = "<h3>Produse comandate:</h3>";
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML += "<p>Coșul de cumpărături este gol!</p>";
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * (item.quantity || 1);
+                total += itemTotal;
+
+                let cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+
+                cartItem.innerHTML = `
+                    <div class="cart-item-details">
+                        <span class="item-name">${item.name}</span> - 
+                        <span class="item-price">${item.price} MDL</span>
+                        <button class="quantity-btn decrease" data-index="${index}">-</button>
+                        <span class="item-quantity">${item.quantity || 1}</span>
+                        <button class="quantity-btn increase" data-index="${index}">+</button>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">Șterge</button>
+                `;
+
+                cartItemsDiv.appendChild(cartItem);
+            });
+
+            let totalElement = document.createElement("p");
+            totalElement.innerHTML = `<strong>Total comanda: ${total} MDL</strong>`;
+            cartItemsDiv.appendChild(totalElement);
+
+            document.getElementById("cartData").value = JSON.stringify(cart);
+
+            addEventListeners();
+        }
+
+        function addEventListeners() {
+            document.querySelectorAll('.quantity-btn.decrease').forEach(btn => {
+                btn.addEventListener('click', () => changeQuantity(btn.dataset.index, -1));
+            });
+
+            document.querySelectorAll('.quantity-btn.increase').forEach(btn => {
+                btn.addEventListener('click', () => changeQuantity(btn.dataset.index, 1));
+            });
+
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', () => removeFromCart(btn.dataset.index));
+            });
+        }
+
+        function changeQuantity(index, change) {
+            index = Number(index);
+            if (cart[index]) {
+                let newQuantity = cart[index].quantity + change;
+                if (newQuantity >= 1 && newQuantity <= 20) {
+                    cart[index].quantity = newQuantity;
+                    updateCart();
+                }
+            }
+        }
+
+        function removeFromCart(index) {
+            index = Number(index);
+            if (cart[index]) {
+                cart.splice(index, 1);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        window.onload = displayCart;
+    </script>
+        <img src="img/Group41.png" alt="Background de jos" class="bottom-image">
+</body>
+</html>

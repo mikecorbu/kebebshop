@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    display: inline-block; /* Se aplică background doar pe text */
+    padding: 10px; /* Spațiu interior pentru text */
+    background-color: #8C1864; /* Aici poți seta culoarea dorită */
+    border-radius: 5px; /* Opțional, pentru colțuri rotunjite */
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+#cartItems, form {
+    width: 48%;
+    background:#F229AC;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #633D73;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove-btn, .quantity-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity-btn {
+    background-color: #28a745;
+}
+
+.quantity-btn:hover {
+    background-color: #218838;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+
+/* Poziționarea imaginii de sus */
+.top-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Ajustează dimensiunea imaginii pentru a nu o întinde pe verticală */
+    z-index: -1; /* Imaginea de sus trebuie să fie în spatele conținutului */
+}
+
+/* Poziționarea imaginii de jos */
+.bottom-image {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Ajustează dimensiunea imaginii pentru a nu o întinde pe verticală */
+    z-index: -1; /* Imaginea de jos trebuie să fie în spatele conținutului */
+}
+.logo {
+    z-index: 11;
+    width: 100px; /* Poți seta dimensiunea dorită pentru logo (ex: 200px) */
+    height: auto; /* Păstrează proporțiile imaginii */
+    display: block; /* Asigură-te că imaginea este un element de tip block pentru aliniere */
+    margin: 0 auto; /* Centerizează imaginea pe orizontală */
+    padding-bottom: 20px; /* Adaugă un spațiu între logo și titlu */
+
+}
