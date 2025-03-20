@@ -350,3 +350,78 @@ body, html {
 .aaa:hover {
   transform: scale(1.3); /* Mărește imaginea cu 0.5% (~2px la 400px) */
 }
+.sauces {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 coloane egale */
+  gap: 10px; /* Spațiere între elemente */
+  margin-top: 10px;
+}
+
+.sauce {
+  background: #8C1864; /* Fundal mov */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.sauce h4 {
+  color: white; /* Text alb */
+  margin: 0;
+}
+
+.sauce button {
+  background: white;
+  color: #8C1864;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sauce button:hover {
+  background: #fff0f6;
+}
+.add-ons {
+  margin-top: 20px;
+}
+
+.add-ons h3 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.sauces {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.sauce {
+  background-color: #8C1864;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.sauce h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.sauce button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #fff;
+  border: none;
+  color: #8C1864;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sauce button:hover {
+  background-color: #8C1864;
+  color: white;
+}
