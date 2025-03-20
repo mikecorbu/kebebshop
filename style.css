@@ -320,14 +320,6 @@ body, html {
     flex-wrap: wrap; /* Permite imaginilor să se plieze pe rânduri la lățimi mai mici */
   }
   
-  .info-images img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(244, 242, 242, 0.1);
-    object-fit: cover; /* Asigură că imaginea nu se deformează la redimensionare */
-  }
   
   .info-footer {
     margin-top: 20px;
@@ -424,4 +416,60 @@ body, html {
 .sauce button:hover {
   background-color: #8C1864;
   color: white;
+}
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 coloane */
+    gap: 15px;
+    background-color: #8C1864;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.info-card {
+    background: #F229AC;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+p, ul {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px 0;
+}
+
+/* Responsive pentru ecrane mai mici */
+@media (max-width: 768px) {
+    .info-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 coloane pe ecrane mici */
+    }
+}
+
+@media (max-width: 500px) {
+    .info-container {
+        grid-template-columns: 1fr; /* 1 coloană pe mobile */
+    }
 }
